@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+    <script src="koristnost.js"></script>
+    <script src="treeObject.js"></script>
+    <script src="treeButtons.js"></script>
+    <script src="tabela.js"></script>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="templates" id="templateTreeNode">
+        <ul class="vozlisce">
+            <li class="podvozlisce">
+
+                <input placeholder="opis" class="opis" onChange="printTree();">
+                <input placeholder="utez" class="utez" onChange="printTree();">
+                <input placeholder="najugodnejsa" class="najugodnejsa" onChange="printTree();">
+                <input placeholder="najmanj" class="najmanj" onChange="printTree();">
+                <!-- <input placeholder="funkcija koristonosti" class="koristnost" onChange="printTree();"> -->
+                <input list="funkcije" name="funkcije" class="koristnost" onChange="printTree();">
+                <datalist id="funkcije">
+                    <option value="k*x+n">Linearna funkcija</option>
+                    <!-- <option value="-(Math.log(x-z)*(-1/Math.log(min-z)))+1">Linearna funkcija</option>
+                    <option value="Math.log10(x-z)*(1/Math.log10(max-z))">Linearna funkcija</option> -->
+                    <option value="Math.exp(-(x-min))">Eksponentna (obratna - vertikalno)</option>
+                    <option value="1-Math.exp(-(x-min))">Eksponentna (obratna - horizontalno)</option>
+                    <option value="Math.pow(x, 2)"></option>
+                </datalist>
+
+                <input placeholder="alternativa" class="alternativa" onChange="printTree();" readonly="true">
+
+                <div class="rezultat"></div>
+                <span class="material-icons" onclick="appendNode(this)">add</span>
+                <span class="material-icons" onclick="removeNode(this)">clear</span>
+                <span class="material-icons" onclick="graf(this)">show_chart</span>
+            </li>
+        </ul>
+    </div>
+
+    <h2>Izračun alternativ</h2>
+    <div class="toolbar">
+        <input type="button" value="Dodaj alternativo" onclick="dodajVrstico()" />
+        <input type="button" value="Izriši tabelo" onclick="izrisiTabelo()" />
+        <input type="button" value="Kalkulator" onclick="izracunAlternativ()" />
+        <input type="button" value="Pdf graf" onclick="grafocen()" />
+    </div>
+    <form>
+        <table id="tabela">
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th><input type="text" value="Alternativa 1"></th>
+                </tr>
+                <tr>
+                    <th><input type="text" value="Alternativa 2"></th>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <div id="myPlot" style="width:100%;max-width:700px" class="templates"></div>
+
+
+    <h2>Odločitveno drevo</h2>
+
+    <div>
+        <div class="toolbar">
+            <input type="file" value="Load" onchange="loadTree();" id="file" />
+            <input type="button" value="Save" onclick="saveTree();" />
+            <input type="button" value="Calc" onclick="calcAlternative();" />
+            <select id="pickAlternative" onfocus="getListOfAlternatices(this);" onchange="calcAlternative();">
+                <option value=1>Alternativa 1</option>
+                <option value=2>Alternativa 2</option>
+            </select>
+        </div>
+        <div>
+            <div id=TreeView></div>
+            <textarea id=jsonView cols="80" rows="20" spellcheck="false"></textarea>
+            <script>
+                appendNode();
+            </script>
+        </div>
+    </div>
+    <div id="grafkoristnosti" style="width:100%;max-width:700px" class="templates"></div>
+    <script src="grafkoristnosti.js"></script>
+
+</html>

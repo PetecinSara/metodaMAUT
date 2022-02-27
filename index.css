@@ -1,0 +1,89 @@
+body {
+    background-color: #1E1E1E;
+    color: #F4FFE2;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.templates {
+    display: none;
+}
+
+ul {
+    background: #333333;
+    width: 180px;
+    margin: 0px 0px 4px;
+    padding-top: 4px;
+    padding-left: 25px;
+    padding-bottom: 4px;
+    font-size: 12px;
+}
+
+.vozlisce {
+    border: 1px solid #000;
+}
+
+.podvozlisce {
+    border: 0px none;
+}
+
+.toolbar {
+    border-top: 1px solid #2E5863;
+    border-bottom: 1px solid #2E5863;
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+
+.toolbar>input {
+    color: white;
+    background-color: #444444;
+}
+
+table {
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    display: table;
+    border-spacing: 1px;
+    border-color: black;
+    border-style: solid;
+    background: #333333;
+}
+
+table>tbody>tr>td {
+    min-width: 175px;
+}
+
+input {
+    color: white;
+    background-color: #2E5863;
+    border-style: inset;
+    border-color: #444444;
+}
+
+input::-webkit-input-placeholder {
+    color: #5abfd8;
+}
+
+nput.opis {
+    color: white;
+}
+
+.material-icons {
+    cursor: pointer;
+}
+
+textarea {
+    background-color: #333333;
+    color: #5abfd8;
+    border: 1px solid #000;
+}
+
+#file {
+    background-color: #2E5863;
+}
+
+ ::-webkit-file-upload-button {
+    color: white;
+    background-color: #444444;
+}
